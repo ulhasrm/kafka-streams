@@ -15,13 +15,12 @@ import org.apache.kafka.streams.kstream.Produced;
 
 /**
  * @author Ulhas Manekar
- *
  */
 public class WordCountApp
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        System.out.println( "Word Count App started!" );
         Properties config = new Properties();
         config.put( StreamsConfig.APPLICATION_ID_CONFIG, "word-count-app" );
         config.put( StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092" );
@@ -45,7 +44,6 @@ public class WordCountApp
             .count();
 
         // 7 - To in order to write the result back to kafka
-
         wordCounts.toStream().to( "word-count-output", Produced.with( Serdes.String(), Serdes.Long() ) );
 
         KafkaStreams streams = new KafkaStreams( builder.build(), config );
@@ -63,7 +61,6 @@ public class WordCountApp
 
         try
         {
-            System.out.println( streams.toString() );
             streams.start();
             latch.await();
         }
