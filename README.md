@@ -2,4 +2,4 @@
 =================================
 
 #### Examples
-1. Word Count - [repositiry](testfolder/testfile.txt)
+1. Word Count
